@@ -2,11 +2,17 @@
 
 namespace CarPark.transport_parts
 {
-    class Chassis
+    public class Chassis
     {
         private int numberOfWheels;
         private long number;
         private float permissibleLoad;
+
+
+        public Chassis()
+        {
+
+        }
 
         public Chassis(int numberOfWheels, long number, float permissibleLoad)
         {
@@ -35,6 +41,12 @@ namespace CarPark.transport_parts
                 CompareUtil.checkFieldWithSign("Permissible Load", value, CompareSign.GREATER, 0);
                 permissibleLoad = value;
             }
+        }
+        public override string? ToString()
+        {
+
+            return "\nChassis: \nNumber = " + Number +
+                "; Number Of Wheels = " + NumberOfWheels + "; Permissible Load = " + PermissibleLoad;
         }
     }
 }

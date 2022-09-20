@@ -2,12 +2,16 @@
 
 namespace CarPark.transport_parts
 {
-    class Engine
+    public class Engine
     {
         private float power;
         private float capacity;
         private TypeEngine typeEngine;
         private long serialNumber;
+
+        public Engine()
+        {
+        }
 
         public Engine(float power, float capacity, TypeEngine typeEngine, long serialNumber)
         {
@@ -28,7 +32,7 @@ namespace CarPark.transport_parts
         }
         public float Capacity
         {
-            get => capacity; 
+            get => capacity;
             set
             {
                 CompareUtil.checkFieldWithSign("Capacity", value, CompareSign.GREATER, 0);
@@ -37,20 +41,30 @@ namespace CarPark.transport_parts
         }
         public TypeEngine TypeEngine
         {
-            get => typeEngine; 
+            get => typeEngine;
             set
             {
-                CompareUtil.checkFieldNotNull("Capacity", value);
+                CompareUtil.checkFieldNotNull("Type Engine", value);
                 typeEngine = value;
             }
         }
-        public long SerialNumber { get => serialNumber; 
+        public long SerialNumber
+        {
+            get => serialNumber;
             set
             {
                 CompareUtil.checkFieldWithSign("Serial Number", value, CompareSign.GREATER, 0);
-                serialNumber = value; 
+                serialNumber = value;
             }
         }
+        public override string? ToString()
+        {
+            return "\nEngine: \nType = " + TypeEngine +
+                "; Capacity = " + Capacity + "; Power = " + Power + "; Serial number = " + SerialNumber;
+        }
+
     }
+
+
 }
 

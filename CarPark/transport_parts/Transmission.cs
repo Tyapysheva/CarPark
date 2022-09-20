@@ -2,11 +2,16 @@
 
 namespace CarPark.transport_parts
 {
-    class Transmission
+    public class Transmission
     {
         private TypeTransmission typeTransmission;
         private byte numberOfGears;
         private string manufacturer = "";
+
+        public Transmission()
+        {
+        
+        }
 
         public Transmission(TypeTransmission typeTransmission, byte numberOfGears, string manufacturer)
         {
@@ -41,6 +46,11 @@ namespace CarPark.transport_parts
                 CompareUtil.checkFieldNotNull("Manufacturer", value);
                 manufacturer = value;
             }
+        }
+        public override string? ToString()
+        {
+            return "\nTransmission: \nType = " + TypeTransmission +
+                "; Number Of Gears = " + NumberOfGears + "; Manufacturer = " + Manufacturer;
         }
     }
 }
