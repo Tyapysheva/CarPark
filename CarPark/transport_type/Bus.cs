@@ -1,10 +1,17 @@
-﻿using CarPark.transport_parts;
+﻿using System.Xml.Serialization;
+using CarPark.transport_parts;
 using CarPark.utility;
 
 namespace CarPark.transport_type
 {
-    class Bus : Transport
+    [Serializable]
+    
+    public class Bus : Transport
     {
+        public Bus()
+        {
+
+        }
         public Bus(Engine engine, Chassis chassis, Transmission transmission) : base(engine, chassis, transmission)
         {
             checkEngine(engine);
@@ -39,12 +46,7 @@ namespace CarPark.transport_type
         }
         public override string? ToString()
         {
-            return "\nBus: \nEngine: \nType = " + engine.TypeEngine +
-                "; Capacity = " + engine.Capacity + "; Power = " + engine.Power + "; Serial number = " + engine.SerialNumber +
-                "\nChassis: \nNumber = " + chassis.Number +
-                "; Number Of Wheels = " + chassis.NumberOfWheels + "; Permissible Load = " + chassis.PermissibleLoad +
-                "\nTransmission: \nType = " + transmission.TypeTransmission +
-                "; Number Of Gears = " + transmission.NumberOfGears + "; Manufacturer = " + transmission.Manufacturer;
+            return "\nBus:" + Engine + Chassis + Transmission;
         }
 
     }

@@ -3,8 +3,13 @@ using CarPark.utility;
 
 namespace CarPark.transport_type
 {
-    class Scooter : Transport
+    [Serializable]
+    public class Scooter : Transport
     {
+        public Scooter()
+        {
+            
+        }
         public Scooter(Engine engine, Chassis chassis, Transmission transmission) : base(engine, chassis, transmission)
         {
             checkEngine(engine);
@@ -40,12 +45,7 @@ namespace CarPark.transport_type
 
         public override string? ToString()
         {
-            return "\nScooter: \nEngine: \nType = " + engine.TypeEngine +
-                "; Capacity = " + engine.Capacity + "; Power = " + engine.Power + "; Serial number = " + engine.SerialNumber +
-                "\nChassis: \nNumber = " + chassis.Number +
-                "; Number Of Wheels = " + chassis.NumberOfWheels + "; Permissible Load = " + chassis.PermissibleLoad +
-                "\nTransmission: \nType = " + transmission.TypeTransmission +
-                "; Number Of Gears = " + transmission.NumberOfGears + "; Manufacturer = " + transmission.Manufacturer;
+            return "\nScooter:" + Engine + Chassis + Transmission;
         }
     }
 
