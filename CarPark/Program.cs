@@ -16,53 +16,66 @@ namespace Carpark
     {
         static void Main(string[] args)
         {
-            Engine engine = new Engine(400F, 20.0F, TypeEngine.TRUCK_ENGINE, 123);
+            Engine engine = new Engine(400F, 20.0F, TypeEngine.TruckEngine, 123);
             Chassis chassis = new Chassis(16, 43, 55000);
-            Transmission transmission = new Transmission(TypeTransmission.MANUAL, 7, "manufacture");
+            Transmission transmission = new Transmission(TypeTransmission.Manual, 7, "manufacture");
             Truck truck = new Truck(engine, chassis, transmission);
 
-            Engine engine1 = new Engine(230F, 6.0F, TypeEngine.BUS_ENGINE, 125);
+            Engine engine1 = new Engine(230F, 6.0F, TypeEngine.BusEngine, 125);
             Chassis chassis1 = new Chassis(8, 46, 11000);
-            Transmission transmission1 = new Transmission(TypeTransmission.AUTOMATIC, 4, "manufacture");
+            Transmission transmission1 = new Transmission(TypeTransmission.Automatic, 4, "manufacture");
             Bus bus = new Bus(engine1, chassis1, transmission1);
 
-            Engine engine2 = new Engine(50F, 0.04F, TypeEngine.SCOOTER_ENGINE, 127);
+            Engine engine2 = new Engine(50F, 0.04F, TypeEngine.ScooterEngine, 12790);
             Chassis chassis2 = new Chassis(2, 23, 250);
-            Transmission transmission2 = new Transmission(TypeTransmission.CONTINUOSLY_VARIABLE, 2, "manufacture");
+            Transmission transmission2 = new Transmission(TypeTransmission.ContinuoslyVariable, 2, "manufacture");
             Scooter scooter = new Scooter(engine2, chassis2, transmission2);
 
-            Engine engine3 = new Engine(200F, 4F, TypeEngine.CAR_ENGINE, 127);
+            Engine engine3 = new Engine(200F, 4F, TypeEngine.CarEngine, 127);
             Chassis chassis3 = new Chassis(4, 30, 6000);
-            Transmission transmission3 = new Transmission(TypeTransmission.CONTINUOSLY_VARIABLE, 15, "manufacture");
+            Transmission transmission3 = new Transmission(TypeTransmission.ContinuoslyVariable, 15, "manufacture");
             PassengerCar passengerCar = new PassengerCar(engine3, chassis3, transmission3);
 
-            Engine engine4 = new Engine(200F, 4F, TypeEngine.CAR_ENGINE, 127);
+            Engine engine4 = new Engine(200F, 4F, TypeEngine.CarEngine, 129);
             Chassis chassis4 = new Chassis(4, 30, 6000);
-            Transmission transmission4 = new Transmission(TypeTransmission.AUTOMATIC, 15, "manufacture");
+            Transmission transmission4 = new Transmission(TypeTransmission.Automatic, 15, "manufacture");
             PassengerCar passengerCar2 = new PassengerCar(engine4, chassis4, transmission4);
 
-
-            Console.WriteLine(truck);
-            Console.WriteLine(bus);
-            Console.WriteLine(scooter);
-            Console.WriteLine(passengerCar);
-
             List<Transport> listTransport = new List<Transport>();
-            listTransport.Add(truck);
-            listTransport.Add(bus);
-            listTransport.Add(scooter);
-            listTransport.Add(passengerCar);
-            listTransport.Add(passengerCar2);
+            /*
+                        TransportCollectionUtility.AddTransport(, truck);
+                        TransportCollectionUtility.AddTransport(listTransport, bus);
+                        TransportCollectionUtility.AddTransport(listTransport, scooter);
+                        TransportCollectionUtility.AddTransport(listTransport, passengerCar);
+                        TransportCollectionUtility.AddTransport(listTransport, passengerCar2);
+                        TransportCollectionUtility.AddTransport(listTransport, new PassengerCar());*/
 
-
+         
             List<Transport> truckAndBus = new List<Transport>();
             truckAndBus.AddRange(SorterTransportUtility.selectTransportFromListByType(listTransport, typeof(Bus)));
             truckAndBus.AddRange(SorterTransportUtility.selectTransportFromListByType(listTransport, typeof(Truck)));
 
-            
+            List<Transport> test = new List<Transport>();
+            test.Add(truck);
+            test.Add(bus);
+            test.Add(scooter);
+            test.Add(passengerCar);
+
+
+            TransportCollectionUtility tsC = new TransportCollectionUtility(test);
+            foreach (var one in tsC)
+            {
+                Console.WriteLine(one);
+            }
+            tsC.GetTransportByParameter("Engine", "400.0");
+            foreach (var one in tsC.UpdateTransportWithSerialNumber(passengerCar2, 127)) 
+            {
+                Console.WriteLine(one);
+            }
+
 
             WorkWithXML.WritePowerTypeNumberOfEngineInXml(truckAndBus, "Sortedfile.xml");
-            WorkWithXML.WriteTransportsToXml(SorterTransportUtility.selectTransportWithEngineCapacity(listTransport,1.5),"transport.xml");
+            WorkWithXML.WriteTransportsToXml(SorterTransportUtility.selectTransportWithEngineCapacity(listTransport, 1.5), "transport.xml");
             WorkWithXML.WriteTransportsGroupByToXml(SorterTransportUtility.selectTransportGroupByTransmissionType(listTransport), "group.xml");
         }
 

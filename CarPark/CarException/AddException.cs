@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarPark.exception
+namespace CarPark.CarException
 {
-    public class ComparisonException : Exception
+    public class AddException : Exception
     {
-        public ComparisonException(string message) : base(message)
+        public AddException(string message) : base(message)
         {
             this.Message = message;
         }

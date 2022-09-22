@@ -4,7 +4,7 @@ namespace CarPark.transport_parts
 {
     public class Engine
     {
-        private float power;
+        public float power;
         private float capacity;
         private TypeEngine typeEngine;
         private long serialNumber;
@@ -26,7 +26,7 @@ namespace CarPark.transport_parts
             get => power;
             set
             {
-                CompareUtil.checkFieldWithSign("Power", value, CompareSign.GREATER, 0);
+                CompareUtil.CheckFieldWithSign("Power", value, CompareSign.Greater, 0);
                 power = value;
             }
         }
@@ -35,7 +35,7 @@ namespace CarPark.transport_parts
             get => capacity;
             set
             {
-                CompareUtil.checkFieldWithSign("Capacity", value, CompareSign.GREATER, 0);
+                CompareUtil.CheckFieldWithSign("Capacity", value, CompareSign.Greater, 0);
                 capacity = value;
             }
         }
@@ -44,7 +44,7 @@ namespace CarPark.transport_parts
             get => typeEngine;
             set
             {
-                CompareUtil.checkFieldNotNull("Type Engine", value);
+                CompareUtil.CheckFieldNotNull("Type Engine", value);
                 typeEngine = value;
             }
         }
@@ -53,7 +53,7 @@ namespace CarPark.transport_parts
             get => serialNumber;
             set
             {
-                CompareUtil.checkFieldWithSign("Serial Number", value, CompareSign.GREATER, 0);
+                CompareUtil.CheckFieldWithSign("Serial Number", value, CompareSign.Greater, 0);
                 serialNumber = value;
             }
         }

@@ -4,7 +4,7 @@ namespace CarPark.transport_parts
 {
     public class Chassis
     {
-        private int numberOfWheels;
+        public int numberOfWheels;
         private long number;
         private float permissibleLoad;
 
@@ -24,21 +24,21 @@ namespace CarPark.transport_parts
         public virtual int NumberOfWheels { get => numberOfWheels; 
             set
             {
-                CompareUtil.checkFieldWithSign("Number Of Wheels", value, CompareSign.GREATER, 0);
+                CompareUtil.CheckFieldWithSign("Number Of Wheels", value, CompareSign.Greater, 0);
                 numberOfWheels = value;
             }
         }
         public virtual long Number { get => number; 
             set
             {
-                CompareUtil.checkFieldWithSign("Number", value, CompareSign.GREATER, 0);
+                CompareUtil.CheckFieldWithSign("Number", value, CompareSign.Greater, 0);
                 number = value;
             }
         }
         public virtual float PermissibleLoad { get => permissibleLoad; 
             set
             {
-                CompareUtil.checkFieldWithSign("Permissible Load", value, CompareSign.GREATER, 0);
+                CompareUtil.CheckFieldWithSign("Permissible Load", value, CompareSign.Greater, 0);
                 permissibleLoad = value;
             }
         }

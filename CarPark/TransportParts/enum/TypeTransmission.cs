@@ -8,8 +8,8 @@ namespace CarPark.transport_parts
 {
     public enum TypeTransmission
     {
-        MANUAL,
-        AUTOMATIC,
-        CONTINUOSLY_VARIABLE
+        Manual,
+        Automatic,
+        ContinuoslyVariable
     }
 }

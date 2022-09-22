@@ -25,7 +25,7 @@ namespace CarPark.transport_parts
             get => typeTransmission;
             set
             {
-                CompareUtil.checkFieldNotNull("Transmission", value);
+                CompareUtil.CheckFieldNotNull("Transmission", value);
                 typeTransmission = value;
             }
         }
@@ -34,7 +34,7 @@ namespace CarPark.transport_parts
             get => numberOfGears; 
             set
             {
-                CompareUtil.checkFieldWithSign("Number Of Gears", value, CompareSign.GREATER, 0);
+                CompareUtil.CheckFieldWithSign("Number Of Gears", value, CompareSign.Greater, 0);
                 numberOfGears = value;
             }
         }
@@ -43,7 +43,7 @@ namespace CarPark.transport_parts
             get => manufacturer; 
             set
             {
-                CompareUtil.checkFieldNotNull("Manufacturer", value);
+                CompareUtil.CheckFieldNotNull("Manufacturer", value);
                 manufacturer = value;
             }
         }

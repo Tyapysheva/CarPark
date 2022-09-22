@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CarPark.exception;
+using CarPark.CarException;
 using CarPark.transport_parts;
 using CarPark.transport_type;
 
@@ -12,23 +12,23 @@ namespace CarPark.utility
 {
     public static class CompareUtil
     {
-        public static void checkFieldWithSign(string fieldName, double obj, CompareSign sign, double num)
+        public static void CheckFieldWithSign(string fieldName, double obj, CompareSign sign, double num)
         {
             switch (sign)
             {
-                case CompareSign.GREATER:
+                case CompareSign.Greater:
                     if (obj < num)
                     {
-                        throw new ComparisonException($"{fieldName} value={obj} must be greater than {num}");
+                        throw new InitializationException($"{fieldName} value={obj} must be greater than {num}");
                     }
                     else
                     {
                         break;
                     }
-                case CompareSign.LESS:
+                case CompareSign.Less:
                     if (obj > num)
                     {
-                        throw new ComparisonException($"{fieldName} value={obj} must be less than {num}");
+                        throw new InitializationException($"{fieldName} value={obj} must be less than {num}");
                     }
                     else
                     {
@@ -39,43 +39,43 @@ namespace CarPark.utility
                     break;
             }
         }
-        public static void checkFieldNotNull(string fieldName, object obj)
+        public static void CheckFieldNotNull(string fieldName, object obj)
         {
             if (obj.Equals(null))
             {
-                throw new ComparisonException($"{fieldName} must be not null");
+                throw new InitializationException($"{fieldName} must be not null");
             }
         }
 
-        public static void checkTypeEngine(string fieldName, object obj, TypeEngine type)
+        public static void CheckTypeEngine(string fieldName, object obj, TypeEngine type)
         {
             if (!obj.Equals(type))
             {
-                throw new ComparisonException($"{fieldName} must be {type}");
+                throw new InitializationException($"{fieldName} must be {type}");
             }
 
         }
 
-        public static void checkTypeTransmission(string fieldName, Type obj, TypeTransmission type)
+        public static void CheckTypeTransmission(string fieldName, Type obj, TypeTransmission type)
         {
             switch (type)
             {
-                case TypeTransmission.MANUAL:
-                case TypeTransmission.AUTOMATIC:
+                case TypeTransmission.Manual:
+                case TypeTransmission.Automatic:
 
-                    if (typeof(Scooter).Equals(obj) || typeof(PassengerCar).Equals(obj))
+                    if (typeof(Scooter).Equals(obj))
                     {
-                        throw new ComparisonException($"{fieldName} must be {type}");
+                        throw new InitializationException($"{fieldName} must be {type}");
                     }
                     else
                     {
                         break;
                     }
 
-                case TypeTransmission.CONTINUOSLY_VARIABLE:
-                    if (obj.Equals(typeof(Truck)) || obj.Equals(typeof(Bus)) || obj.Equals(typeof(PassengerCar)))
+                case TypeTransmission.ContinuoslyVariable:
+                    if (obj.Equals(typeof(Truck)) || obj.Equals(typeof(Bus)))
                     {
-                        throw new ComparisonException($"{fieldName} must be {type}");
+                        throw new InitializationException($"{fieldName} must be {type}");
                     }
                     else
                     {
@@ -90,7 +90,7 @@ namespace CarPark.utility
 
     public enum CompareSign
     {
-        GREATER,
-        LESS
+        Greater,
+        Less
     }
 }

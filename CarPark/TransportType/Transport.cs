@@ -11,6 +11,8 @@ namespace CarPark.transport_type
         protected Engine engine;
         protected Chassis chassis;
         protected Transmission transmission;
+
+        protected string model;
         public Transport()
         {
 
@@ -19,8 +21,8 @@ namespace CarPark.transport_type
         public Transport(Engine engine, Chassis chassis, Transmission transmission)
         {
             Engine = engine;
-            this.chassis = chassis;
-            this.transmission = transmission;
+            Chassis = chassis;
+            Transmission = transmission;
         }
 
         public Engine Engine
@@ -28,7 +30,7 @@ namespace CarPark.transport_type
             get => engine;
             set
             {
-                CompareUtil.checkFieldNotNull("Engine", value);
+                CompareUtil.CheckFieldNotNull("Engine", value);
                 engine = value;
             }
         }
@@ -38,7 +40,7 @@ namespace CarPark.transport_type
             get => chassis;
             set
             {
-                CompareUtil.checkFieldNotNull("Chassis", value);
+                CompareUtil.CheckFieldNotNull("Chassis", value);
                 chassis = value;
             }
         }
@@ -47,7 +49,7 @@ namespace CarPark.transport_type
             get => transmission;
             set
             {
-                CompareUtil.checkFieldNotNull("Transmission", value);
+                CompareUtil.CheckFieldNotNull("Transmission", value);
                 transmission = value;
             }
         }

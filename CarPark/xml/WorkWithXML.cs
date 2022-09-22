@@ -25,7 +25,7 @@ namespace CarPark.xml
             ns.Add("", "");
 
             using (writer = XmlWriter.Create(fileName, settings))
-            {   
+            {
                 writer.WriteStartDocument();
                 writer.WriteStartElement("Transport");
 
@@ -82,7 +82,6 @@ namespace CarPark.xml
                 XmlNode transportNode = xmlDoc.CreateElement(transport.GetType().Name);
 
                 XmlNode engineNode = xmlDoc.CreateElement(transport.Engine.GetType().Name);
-
 
                 XmlNode typeEngineNode = xmlDoc.CreateElement(transport.Engine.TypeEngine.GetType().Name);
                 typeEngineNode.InnerText = transport.Engine.TypeEngine.ToString();
